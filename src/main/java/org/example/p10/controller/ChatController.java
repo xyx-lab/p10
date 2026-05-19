@@ -1,7 +1,7 @@
 package org.example.p10.controller;
 
-import org.example.p10.model.Result;
 import org.example.p10.model.dto.ChatRequestDTO;
+import org.example.p10.model.Result;
 import org.example.p10.model.vo.ChatResponseVO;
 import org.example.p10.service.ChatService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,8 +21,7 @@ public class ChatController {
 
     @PostMapping
     public Result<ChatResponseVO> chat(@RequestBody ChatRequestDTO requestDTO) {
-        String answer = chatService.chat(requestDTO.getMessage());
-        ChatResponseVO responseVO = new ChatResponseVO(requestDTO.getMessage(), answer);
+        ChatResponseVO responseVO = chatService.chat(requestDTO);
         return Result.success(responseVO);
     }
 }
